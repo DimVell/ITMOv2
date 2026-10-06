@@ -47,6 +47,15 @@
       ],
       "enabled": true,
       "environment": {}
+    },
+    "mini-echo": {
+      "type": "local",
+      "command": [
+        "node",
+        ".opencode/mcp/mini-echo.js"
+      ],
+      "enabled": true,
+      "environment": {}
     }
   }
 }
