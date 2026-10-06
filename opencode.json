@@ -18,5 +18,35 @@
         }
       }
     }
+  },
+  "skills": {
+    "paths": [
+      ".opencode/skills"
+    ]
+  },
+  "mcp": {
+    "git": {
+      "type": "local",
+      "command": [
+        ".opencode/mcp/git-venv/bin/python3",
+        "-m",
+        "mcp_server_git",
+        "--repository",
+        "/Users/dimvell/ITMOv2"
+      ],
+      "enabled": true,
+      "environment": {}
+    },
+    "filesystem-demo": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "practices/practice_03/lab/demo"
+      ],
+      "enabled": true,
+      "environment": {}
+    }
   }
 }
