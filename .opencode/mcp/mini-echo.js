@@ -2,6 +2,7 @@
 // Minimal MCP server: one tool `mini_echo` that echoes input or errors on empty
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { miniEcho } from "./tools/mini-echo-handler.js";
 
 const server = new Server({ name: "mini-echo", version: "0.1.0" }, {
   tools: {
@@ -14,11 +15,7 @@ const server = new Server({ name: "mini-echo", version: "0.1.0" }, {
         additionalProperties: false
       },
       async handler(args) {
-        const text = (args?.text ?? "").trim();
-        if (!text) {
-          throw new Error("empty text");
-        }
-        return { content: [{ type: "text", text }] };
+        return miniEcho(args);
       }
     }
   }

@@ -5,7 +5,7 @@ OC_DIR := $(ROOT)/.opencode
 P4_DIR := $(ROOT)/practices/practice_04
 PROOFS := $(P4_DIR)/proofs
 
-.PHONY: all install verify mcp-success mcp-error skill-run hook-install clean
+.PHONY: all install verify mcp-success mcp-error mcp-connected skill-run hook-install clean
 
 all: verify
 
@@ -14,15 +14,20 @@ install:
 	@npm --prefix $(OC_DIR) i --silent
 	@mkdir -p $(PROOFS)
 
-mcp-success:
-	@echo "[mcp] mini-echo success"
+mcp-connected:
+	@echo "[mcp] list servers"
 	@mkdir -p $(PROOFS)
-	@opencode call mini-echo.mini_echo '{"text":"hello"}' --format json > $(PROOFS)/mini-echo.success.json
+	@opencode mcp list > $(PROOFS)/mcp-list.txt
+
+mcp-success:
+	@echo "[mcp] mini-echo success (direct handler)"
+	@mkdir -p $(PROOFS)
+	@node $(P4_DIR)/scripts/test-mini-echo.js success > $(PROOFS)/mini-echo.success.json
 
 mcp-error:
-	@echo "[mcp] mini-echo error (expected)"
+	@echo "[mcp] mini-echo error (expected, direct handler)"
 	@mkdir -p $(PROOFS)
-	@opencode call mini-echo.mini_echo '{"text":""}' --format json > $(PROOFS)/mini-echo.error.json || true
+	@node $(P4_DIR)/scripts/test-mini-echo.js error > $(PROOFS)/mini-echo.error.txt || true
 
 skill-run:
 	@echo "[skill] notify-mini read-only check"
@@ -34,7 +39,7 @@ skill-run:
 	  "Прочитай README.md инструментом read. Назови команду тестирования со ссылкой на файл" \
 	  > $(PROOFS)/notify-mini.read-check.jsonl
 
-verify: install mcp-success mcp-error skill-run
+verify: install mcp-connected mcp-success mcp-error skill-run
 	@echo "[verify] Done. Proofs in $(PROOFS)"
 
 hook-install:
