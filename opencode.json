@@ -28,7 +28,7 @@
     "git": {
       "type": "local",
       "command": [
-        ".opencode/mcp/git-venv/bin/python3",
+        "/Users/dimvell/ITMOv2/.opencode/mcp/git-venv/bin/python3",
         "-m",
         "mcp_server_git",
         "--repository",
@@ -43,7 +43,7 @@
         "npx",
         "-y",
         "@modelcontextprotocol/server-filesystem",
-        "practices/practice_03/lab/demo"
+        "/Users/dimvell/ITMOv2/practices/practice_03/lab/demo"
       ],
       "enabled": true,
       "environment": {}
@@ -52,7 +52,7 @@
       "type": "local",
       "command": [
         "node",
-        ".opencode/mcp/mini-echo.js"
+        "/Users/dimvell/ITMOv2/.opencode/mcp/mini-echo.js"
       ],
       "enabled": true,
       "environment": {}
