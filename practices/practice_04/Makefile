@@ -5,7 +5,7 @@ OC_DIR := $(ROOT)/.opencode
 P4_DIR := $(ROOT)/practices/practice_04
 PROOFS := $(P4_DIR)/proofs
 
-.PHONY: all install verify mcp-success mcp-error mcp-connected skill-run hook-install clean
+.PHONY: all install verify mcp-success mcp-error mcp-connected mcp-search skill-run hook-install clean
 
 all: verify
 
@@ -29,6 +29,11 @@ mcp-error:
 	@mkdir -p $(PROOFS)
 	@node $(P4_DIR)/scripts/test-mini-echo.js error > $(PROOFS)/mini-echo.error.txt || true
 
+mcp-search:
+	@echo "[mcp] text-search demo (direct handler)"
+	@mkdir -p $(PROOFS)
+	@node $(P4_DIR)/scripts/test-mini-echo.js search > $(PROOFS)/text-search.demo.json
+
 skill-run:
 	@echo "[skill] notify-mini read-only check"
 	@mkdir -p $(PROOFS)
@@ -39,7 +44,7 @@ skill-run:
 	  "Прочитай README.md инструментом read. Назови команду тестирования со ссылкой на файл" \
 	  > $(PROOFS)/notify-mini.read-check.jsonl
 
-verify: install mcp-connected mcp-success mcp-error skill-run
+verify: install mcp-connected mcp-success mcp-error mcp-search skill-run
 	@echo "[verify] Done. Proofs in $(PROOFS)"
 
 hook-install:
