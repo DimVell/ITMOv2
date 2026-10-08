@@ -1,0 +1,16 @@
+┌  MCP Servers
+│
+●  ✗ git [90mfailed
+│      ENOENT: no such file or directory, posix_spawn '.opencode/mcp/git-venv/bin/python3'
+│      [90m.opencode/mcp/git-venv/bin/python3 -m mcp_server_git --repository /Users/dimvell/ITMOv2
+│
+●  ✗ filesystem-demo [90mfailed
+│      MCP error -32000: Connection closed
+│      [90mnpx -y @modelcontextprotocol/server-filesystem practices/practice_03/lab/demo
+│
+●  ✗ mini-echo [90mfailed
+│      MCP error -32000: Connection closed
+│      [90mnode .opencode/mcp/mini-echo.js
+│
+└  3 server(s)
+
