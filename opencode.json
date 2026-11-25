@@ -18,5 +18,44 @@
         }
       }
     }
+  },
+  "skills": {
+    "paths": [
+      ".opencode/skills"
+    ]
+  },
+  "mcp": {
+    "git": {
+      "type": "local",
+      "command": [
+        "/Users/dimvell/ITMOv2/.opencode/mcp/git-venv/bin/python3",
+        "-m",
+        "mcp_server_git",
+        "--repository",
+        "/Users/dimvell/ITMOv2"
+      ],
+      "enabled": true,
+      "environment": {}
+    },
+    "filesystem-demo": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/dimvell/ITMOv2/practices/practice_03/lab/demo"
+      ],
+      "enabled": true,
+      "environment": {}
+    },
+    "mini-echo": {
+      "type": "local",
+      "command": [
+        "node",
+        "/Users/dimvell/ITMOv2/.opencode/mcp/mini-echo.js"
+      ],
+      "enabled": true,
+      "environment": {}
+    }
   }
 }

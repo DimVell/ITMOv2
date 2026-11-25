@@ -1,0 +1,13 @@
+{
+  "command": "opencode run --agent shop-planner --model vsellm/openai/gpt-5 --format json --file evidence/planner-before-normal.txt",
+  "opencode_version": "1.18.34",
+  "result": "error",
+  "error": {
+    "name": "APIError",
+    "statusCode": 402,
+    "message": "Request failed",
+    "provider_url": "https://litellm.data-light.ru/chat/completions"
+  },
+  "note": "Модель не вернула решение; injected/after/judge runs не запускались повторно с тем же недоступным provider."
+}
+

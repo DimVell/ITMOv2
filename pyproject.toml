@@ -1,0 +1,28 @@
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+indent-width = 4
+src = ["practices", "scripts"]
+extend-exclude = [
+    ".opencode",
+    ".github",
+    "node_modules",
+    "practices/practice_03/lab/results",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "F",  # pyflakes
+    "I",  # import sorting
+    "W",  # pycodestyle warnings
+    "UP", # pyupgrade
+]
+ignore = [
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "lf"

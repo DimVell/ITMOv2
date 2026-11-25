@@ -1,0 +1,14 @@
+{
+  "verified_at": "2026-11-25T14:28:42.854334+00:00",
+  "test": "ошибка POST сохраняет ввод и позволяет повторить попытку",
+  "mutation": "Temporarily replaced the error message with an empty string in App.tsx.",
+  "command": "npm test -- --grep 'ошибка POST сохраняет' --reporter=list",
+  "exit_code": 1,
+  "expected_failure": true,
+  "failure": "Expected alert to contain «Не удалось сохранить подписчика.»; received an empty string.",
+  "source_restored": true,
+  "full_suite_after_restore": {
+    "passed": 16,
+    "failed": 0
+  }
+}
