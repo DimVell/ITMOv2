@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notify Mini — AI-прототип</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#f4f6f5;color:#17261f;font:16px/1.65 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #246b48;outline-offset:4px}
+    .prototype-tools{background:#17261f;color:white;padding:14px 24px;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;font-size:14px}
+    .prototype-tools span{margin-right:14px}.prototype-tools button{border:1px solid #53665b;color:white;background:transparent;border-radius:7px;padding:5px 11px;font-size:14px}.prototype-tools button[aria-pressed=true]{background:#dcebdc;color:#17261f;border-color:#dcebdc}
+    header{background:#fff;border-bottom:1px solid #e4eae6}.bar,main{max-width:1200px;margin:auto;padding-inline:24px}.bar{height:86px;display:flex;align-items:center;justify-content:space-between}.brand{font-size:24px;font-weight:750;letter-spacing:-1.2px;display:flex;align-items:center;gap:11px}.mark{background:#246b48;color:white;border-radius:12px;width:39px;height:39px;display:grid;place-items:center;font-size:23px}.muted{color:#78867e;font-weight:450}.tagline{font-size:14px;color:#758078}
+    main{padding-block:58px 28px}.heading{display:flex;justify-content:space-between;align-items:center;gap:28px;margin-bottom:38px}.eyebrow{font-size:12px;letter-spacing:.16em;color:#246b48;font-weight:750;margin:0 0 14px}h1{font-size:52px;letter-spacing:-2.8px;line-height:1.12;margin:0;font-weight:700}.description{color:#63716a;margin:16px 0 0}h2{font-size:20px;letter-spacing:-.5px;margin:0;font-weight:650}
+    .card{background:white;border:1px solid #e4eae6;border-radius:14px;box-shadow:0 4px 18px #17261f03}.total{min-width:220px;padding:23px;display:flex;gap:17px;align-items:center}.total-icon{width:46px;height:46px;border-radius:12px;background:#eef5ef;color:#246b48;display:grid;place-items:center;font-size:25px}.total small{font-size:14px;color:#63716a}.total strong{display:block;font-size:32px;line-height:1.25}
+    .grid{display:grid;grid-template-columns:350px minmax(0,1fr);gap:26px;align-items:start}.form-card{padding:28px}.plus{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:#f2f7f3;border:1px solid #dbe7df;color:#246b48;font-size:24px;margin-bottom:24px}.help{font-size:14px;color:#63716a;margin:8px 0 24px}.field{position:relative;margin-top:8px}.field label{position:absolute;left:12px;top:-12px;background:white;padding:0 5px;font-size:12px;color:#63716a}.field input{width:100%;height:57px;border:1px solid #a8b2ac;border-radius:4px;padding:15px;font-size:16px}.hint{font-size:12px;color:#63716a;margin:4px 14px}.submit{width:100%;min-height:46px;margin-top:20px;background:#246b48;color:white;border:0;border-radius:10px;font-size:15px;font-weight:600}.submit:disabled{background:#d9dfdb;color:#758078;cursor:wait}.reassurance{display:flex;gap:10px;padding:22px 9px;font-size:14px;color:#63716a}.reassurance b{color:#246b48}
+    .list-card{min-height:436px;overflow:hidden}.list-title{padding:26px 28px;display:flex;justify-content:space-between;border-bottom:1px solid #e4eae6;align-items:center}.pill{background:#f0f2f1;border-radius:20px;padding:1px 10px;font-size:13px}.empty{min-height:354px;padding:40px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}.art{position:relative;width:104px;height:104px;border-radius:50%;background:#eef5ef;color:#42775b;display:grid;place-items:center;margin-bottom:28px;font-size:46px}.art:before{content:"";position:absolute;width:124px;height:124px;border:1px dashed #c7d9cc;border-radius:50%}.art:after{content:"";position:absolute;right:-10px;top:21px;width:13px;height:13px;background:#d5a457;border:3px solid white;border-radius:50%}.empty p{max-width:330px;color:#63716a;margin:12px 0 0}.empty .pill{margin-top:24px;background:white;border:1px solid #d2dcd5;color:#63716a}
+    .columns{display:flex;justify-content:space-between;padding:16px 28px 10px;font-size:12px;letter-spacing:.08em;color:#7c8780}.person{display:flex;align-items:center;gap:14px;padding:17px 28px;border-bottom:1px solid #eef1ef}.avatar{background:#e9f0e7;color:#457145;border-radius:50%;width:42px;height:42px;display:grid;place-items:center;font-size:14px;font-weight:650}.person .status{margin-left:auto;background:#eef5ef;color:#246b48;border:1px solid #deebe1;padding:2px 10px;border-radius:20px;font-size:13px}.list-footer{padding:20px 28px;font-size:14px;color:#7a867e}.notice{margin-top:20px;padding:12px 14px;border-radius:10px;background:#edf7ed;color:#234f29;font-size:14px}.notice.error{background:#fdeded;color:#7c2328}.skeleton{padding:25px 28px}.skeleton-row{display:flex;align-items:center;gap:16px;padding:12px 0}.sk-circle{width:42px;height:42px;border-radius:50%;background:#edf0ee}.sk-line{height:20px;width:45%;background:#edf0ee;border-radius:4px}footer{border-top:1px solid #e0e7e2;margin-top:64px;padding-top:24px;display:flex;justify-content:space-between;font-size:14px;color:#7a867e}.note{max-width:1152px;margin:20px auto;padding:0 24px;color:#63716a;font-size:14px}
+    @media(max-width:700px){.tagline{display:none}.bar{height:72px}main{padding-top:32px}.heading{flex-direction:column;align-items:stretch;gap:22px;margin-bottom:24px}h1{font-size:32px;letter-spacing:-1.7px}.total{padding:16px 20px}.grid{grid-template-columns:1fr;gap:8px}.form-card{padding:24px}.reassurance{padding-block:18px}footer{margin-top:36px;flex-direction:column;gap:5px}.person{padding-inline:20px}.prototype-tools{padding-inline:12px}.prototype-tools span{width:100%;text-align:center}}
+  </style>
+</head>
+<body>
+  <nav class="prototype-tools" aria-label="Состояния прототипа">
+    <span>AI-прототип · демонстрационные данные</span>
+    <button data-state="empty">Пустой список</button><button data-state="input">Ввод</button><button data-state="loading">Загрузка</button><button data-state="success">Результат</button><button data-state="error">Ошибка</button>
+  </nav>
+  <header><div class="bar"><div class="brand"><span class="mark">♧</span><span>notify<span class="muted">mini</span></span></div><span class="tagline">Ваше пространство для связи</span></div></header>
+  <main>
+    <div class="heading"><div><p class="eyebrow">ВАША АУДИТОРИЯ</p><h1>Ближе к вашим людям.</h1><p class="description">Добавляйте подписчиков и собирайте свою аудиторию в одном месте.</p></div><div class="card total"><span class="total-icon">♧</span><div><small>Всего подписчиков</small><strong id="total">0</strong></div></div></div>
+    <div class="grid"><div><section class="card form-card"><span class="plus">＋</span><h2>Новый подписчик</h2><p class="help">Всё начинается со знакомства. Как зовут вашего подписчика?</p><form id="demo-form"><div class="field"><label for="name">Имя подписчика</label><input id="name" autocomplete="off" /></div><p class="hint">От 1 до 40 символов. Например, Анна Иванова.</p><button class="submit" type="submit">＋ Добавить подписчика</button></form><div id="notice"></div></section><div class="reassurance"><b>✓</b><span>Список сохраняется автоматически. Подписчики останутся на месте после обновления страницы.</span></div></div>
+    <section class="card list-card"><div class="list-title"><h2>Подписчики</h2><span class="pill" id="count">0</span></div><div id="list"></div></section></div>
+    <footer><span>Notify Mini</span><span>Маленький инструмент. Больше связи.</span></footer>
+  </main>
+  <p class="note">Прототип создан с помощью Codex. Исходный экран, ввод, ожидание, результат и ошибка доступны через переключатели. Рабочее приложение использует Material UI и настоящий API проекта.</p>
+  <script>
+    const empty = '<div class="empty"><div class="art" aria-hidden="true">♧</div><h2>Здесь начинается ваша аудитория</h2><p>Пока список пуст. Добавьте первого подписчика с помощью формы.</p><span class="pill">Первое знакомство — первый шаг</span></div>';
+    function show(state) {
+      document.querySelectorAll('[data-state]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.state === state)));
+      const loading = state === 'loading';
+      const success = state === 'success';
+      document.querySelector('#name').value = ['input', 'loading', 'error'].includes(state) ? 'Анна Иванова' : '';
+      document.querySelector('#name').disabled = loading;
+      document.querySelector('.submit').disabled = loading;
+      document.querySelector('.submit').textContent = loading ? 'Добавляем…' : '＋ Добавить подписчика';
+      document.querySelector('#total').textContent = success ? '1' : '0';
+      document.querySelector('#count').textContent = success ? '1' : '0';
+      document.querySelector('#notice').innerHTML = success ? '<div class="notice" role="status">Анна Иванова — подписчик добавлен.</div>' : state === 'error' ? '<div class="notice error" role="alert">Не удалось сохранить подписчика. Попробуйте ещё раз.</div>' : '';
+      document.querySelector('#list').innerHTML = success ? '<div class="columns"><span>ИМЯ</span><span>СТАТУС</span></div><div class="person"><span class="avatar">АИ</span><span>Анна Иванова</span><span class="status">Подписан</span></div><div class="list-footer">✓ Ваш список актуален</div>' : loading ? '<div class="skeleton" role="status" aria-label="Загрузка">' + '<div class="skeleton-row"><span class="sk-circle"></span><span class="sk-line"></span></div>'.repeat(3) + '</div>' : empty;
+    }
+    document.querySelectorAll('[data-state]').forEach(button => button.addEventListener('click', () => show(button.dataset.state)));
+    document.querySelector('#demo-form').addEventListener('submit', event => { event.preventDefault(); show('loading'); setTimeout(() => show('success'), 700); });
+    show(new URLSearchParams(location.search).get('state') || 'empty');
+  </script>
+</body>
+</html>

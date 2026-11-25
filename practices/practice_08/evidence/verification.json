@@ -1,0 +1,64 @@
+{
+  "generated_at": "2026-11-25T14:27:18.804Z",
+  "command": "npm run evidence",
+  "tests": {
+    "passed": 16,
+    "failed": 0,
+    "skipped": 0,
+    "duration_ms": 5585.359,
+    "command": "npm test",
+    "stage": "Full suite after restoring the deliberate mutation"
+  },
+  "real_api": {
+    "added": 3,
+    "present_after_reload": true
+  },
+  "screenshots": [
+    {
+      "file": "empty.png",
+      "data": "mock API responses matching the real contract"
+    },
+    {
+      "file": "input.png",
+      "data": "mock API responses matching the real contract"
+    },
+    {
+      "file": "loading.png",
+      "data": "mock API responses matching the real contract"
+    },
+    {
+      "file": "success.png",
+      "data": "mock API responses matching the real contract"
+    },
+    {
+      "file": "error.png",
+      "data": "mock API responses matching the real contract"
+    },
+    {
+      "file": "real-api.png",
+      "data": "real Python API, three POST requests and reload"
+    },
+    {
+      "file": "mobile.png",
+      "data": "real Python API"
+    },
+    {
+      "file": "prototype.png",
+      "data": "AI-authored standalone prototype"
+    }
+  ],
+  "build": {
+    "command": "npm run build",
+    "exit_code": 0
+  },
+  "dependency_lock": {
+    "command": "npm ci --dry-run --offline",
+    "exit_code": 0
+  },
+  "start_smoke_test": {
+    "command": "npm start",
+    "api_url": "http://127.0.0.1:8000",
+    "frontend_url": "http://127.0.0.1:5173",
+    "result": "Both servers became ready; stopped after verification."
+  }
+}
